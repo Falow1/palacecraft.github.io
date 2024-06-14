@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function(event) {
       const flyoutMenu = this.nextElementSibling;
       if (flyoutMenu && flyoutMenu.classList.contains('nav-flyout')) {
-        event.preventDefault();
         const isOpen = flyoutMenu.style.transform === 'translateX(0%)';
         closeAllFlyouts();
         if (!isOpen) {
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     flyouts.forEach(function(flyout) {
       flyout.style.transform = 'translateX(100%)';
     });
-  }
+  });
 
   const flyoutLinks = document.querySelectorAll('.nav-flyout a');
   flyoutLinks.forEach(function(link) {
