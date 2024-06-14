@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  const flyoutLinks = document.querySelectorAll('.nav-flyout a');
+  const flyoutLinks = document.querySelectorAll('.nav-flyout li a');
   flyoutLinks.forEach(function(link) {
     link.addEventListener('click', function(event) {
       event.stopPropagation();
