@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         closeAllFlyouts();
         if (!isOpen) {
           flyoutMenu.style.transform = 'translateX(0%)';
+          event.preventDefault(); // Evita o redirecionamento ao clicar no link pai do submenu
         }
       }
     });
