@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         closeAllFlyouts();
         if (!isOpen) {
           flyoutMenu.style.transform = 'translateX(0%)';
-          event.preventDefault(); // Evita o redirecionamento ao clicar no link pai do submenu
+          event.preventDefault();
         }
       }
     });
@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const flyoutLinks = document.querySelectorAll('.nav-flyout a');
   flyoutLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-      closeAllFlyouts();
+    link.addEventListener('click', function(event) {
+      event.stopPropagation();
     });
   });
 });
