@@ -1,60 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var navItems = document.querySelectorAll('.sidebar-nav > ul > li');
-  
-    navItems.forEach(function(item) {
-      item.addEventListener('click', function(e) {
-        var isOpen = this.classList.contains('open');
-
-        navItems.forEach(function(i) {
-          i.classList.remove('open');
-        });
-
+  const mainMenuLinks = document.querySelectorAll('.sidebar-nav > ul > li > a');
+  mainMenuLinks.forEach(function(link) {
+    link.addEventListener('click', function(event) {
+      const flyoutMenu = this.nextElementSibling;
+      if (flyoutMenu && flyoutMenu.classList.contains('nav-flyout')) {
+        event.preventDefault();
+        const isOpen = flyoutMenu.style.transform === 'translateX(0%)';
+        closeAllFlyouts();
         if (!isOpen) {
-          this.classList.add('open');
+          flyoutMenu.style.transform = 'translateX(0%)';
         }
-      });
-  
-      item.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        var isOpen = this.classList.contains('open');
-  
-        navItems.forEach(function(i) {
-          i.classList.remove('open');
-        });
-  
-        if (!isOpen) {
-          this.classList.add('open');
-        }
-      });
+      }
     });
   });
-document.addEventListener('DOMContentLoaded', function() {
-  var navItems = document.querySelectorAll('.sidebar-nav > ul > li');
 
-  navItems.forEach(function(item) {
-    item.addEventListener('click', function(e) {
-      var isOpen = this.classList.contains('open');
-
-      navItems.forEach(function(i) {
-        i.classList.remove('open');
-      });
-
-      if (!isOpen) {
-        this.classList.add('open');
-      }
+  function closeAllFlyouts() {
+    const flyouts = document.querySelectorAll('.nav-flyout');
+    flyouts.forEach(function(flyout) {
+      flyout.style.transform = 'translateX(100%)';
     });
+  }
 
-    item.addEventListener('touchend', function(e) {
-      e.preventDefault();
-      var isOpen = this.classList.contains('open');
-
-      navItems.forEach(function(i) {
-        i.classList.remove('open');
-      });
-
-      if (!isOpen) {
-        this.classList.add('open');
-      }
+  const flyoutLinks = document.querySelectorAll('.nav-flyout a');
+  flyoutLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      closeAllFlyouts();
     });
   });
 });
